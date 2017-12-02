@@ -15,7 +15,7 @@ public class Cannonrotation : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         float inputX = Input.GetAxis("Vertical");
-        print(transform.rotation.z);
+        //print(transform.rotation.z);
 
         if(inputX > 0 && transform.rotation.z <= 57.952/120)
         {
