@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class TargetScript : MonoBehaviour {
 
-	public DeathObserver death;
-
+	private DeathObserver death;
+	private GameObject thanatos;
 	private bool killed = false;
 	private SpriteRenderer sprite;
+	private Rigidbody2D theRigidBody;
 	// Use this for initialization
 	void Start () {
+		thanatos = GameObject.Find("Thanatos");
+		death = thanatos.GetComponent<DeathObserver> ();
 		sprite = GetComponent<SpriteRenderer> ();
+		theRigidBody = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
@@ -23,6 +27,7 @@ public class TargetScript : MonoBehaviour {
 			if (!killed) {
 				killed = true;
 				death.TargetDeath ();
+				theRigidBody.constraints = RigidbodyConstraints2D.None;
 			}
 
 			sprite.color = Color.red;
