@@ -13,9 +13,6 @@ public class FiringScript : MonoBehaviour {
     
 	public GameObject bullet;
 
-	private float winTime;
-    private bool won;
-    private Text txt;
     private GameObject cannon;
     private GameObject winCanvas;
     //private GameObject shotCanvas;
@@ -25,11 +22,10 @@ public class FiringScript : MonoBehaviour {
     private Vector2 initPos;
     private int SceneNum;
     private float timer;
-    private float loseTimer;
     // Use this for initialization
     void Start () {
 
-		cannon = GameObject.Find("Cannon");
+		cannon = gameObject;
         ejectPoint = cannon.transform.Find("EjectPoint");
         
 		//winCanvas = GameObject.Find("WinCanvas");
@@ -47,8 +43,6 @@ public class FiringScript : MonoBehaviour {
 		SceneNum = SceneManager.GetActiveScene().buildIndex;
         initPos = transform.position;
         timer = time;
-        loseTimer = timer + 3f;
-        winTime = time;
     }
 	
 	// Update is called once per frame
