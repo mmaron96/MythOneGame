@@ -11,6 +11,8 @@ public class FiringScript : MonoBehaviour {
     public int shots = 3;
     public float time = 6f;
     
+	public bool cliff = false;
+	private int cliffthing = 0;
 	public GameObject bullet;
 
     private GameObject cannon;
@@ -66,6 +68,15 @@ public class FiringScript : MonoBehaviour {
 	}
 
     void fire() {
+		
+		if (cliffthing != 0) {
+			return;
+		}
+		if (cliff) {
+			if (cliffthing == 0) {
+				cliffthing = 1;
+			}
+		}
 		GameObject tmpBullet = Instantiate (bullet);
         tmpBullet.transform.position = ejectPoint.position;
 		float z = cannon.transform.rotation.z;
